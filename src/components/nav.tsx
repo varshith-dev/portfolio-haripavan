@@ -1,4 +1,7 @@
-import { ArrowUpRight } from "lucide-react";
+"use client";
+
+import { useState } from "react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
 import { profile } from "@/lib/data";
 
 const links = [
@@ -10,12 +13,27 @@ const links = [
 ];
 
 export function SiteHeader() {
+  const [open, setOpen] = useState(false);
+
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-background/85 backdrop-blur">
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-5 py-4 sm:px-8">
-        <a href="/#top" className="text-[14px] font-medium tracking-tight">
-          Hari Pavan
-        </a>
+        <div className="flex items-center gap-3">
+          {/* Hamburger — mobile only, top-left */}
+          <button
+            type="button"
+            aria-label="Menu"
+            aria-expanded={open}
+            onClick={() => setOpen((v) => !v)}
+            className="flex h-8 w-8 items-center justify-center rounded-md border border-border sm:hidden"
+          >
+            {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+          </button>
+          <a href="/#top" className="text-[14px] font-medium tracking-tight">
+            Hari Pavan
+          </a>
+        </div>
+
         <div className="flex items-center gap-6">
           <nav className="hidden items-center gap-5 sm:flex">
             {links.map((l) => (
@@ -40,18 +58,21 @@ export function SiteHeader() {
         </div>
       </div>
 
-      {/* Mobile nav — scrollable */}
-      <nav className="flex gap-5 overflow-x-auto border-t border-border px-5 py-2.5 sm:hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-        {links.map((l) => (
-          <a
-            key={l.href}
-            href={l.href}
-            className="shrink-0 text-[13px] text-muted-foreground transition-colors"
-          >
-            {l.label}
-          </a>
-        ))}
-      </nav>
+      {/* Mobile dropdown menu */}
+      {open && (
+        <nav className="flex flex-col border-t border-border px-5 py-2 sm:hidden">
+          {links.map((l) => (
+            <a
+              key={l.href}
+              href={l.href}
+              onClick={() => setOpen(false)}
+              className="border-b border-border/60 py-3 text-[15px] text-foreground/80 last:border-b-0 transition-colors hover:text-foreground"
+            >
+              {l.label}
+            </a>
+          ))}
+        </nav>
+      )}
     </header>
   );
 }

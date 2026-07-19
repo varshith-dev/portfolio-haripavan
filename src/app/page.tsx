@@ -27,8 +27,8 @@ export default function Home() {
       <section>
         <Container className="pb-12 pt-10 sm:pb-16 sm:pt-14">
           <div className="grid items-center gap-10 lg:grid-cols-[1fr_360px] lg:gap-14">
-            {/* Text */}
-            <div className="order-2 lg:order-1">
+            {/* Text (first on mobile) */}
+            <div className="lg:order-1">
               <p className="font-mono text-[12px] uppercase tracking-[0.22em] text-muted-foreground">
                 People &amp; Culture Partner · HR Domain Expert
               </p>
@@ -106,9 +106,9 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Photo — controlled portrait */}
-            <div className="order-1 lg:order-2">
-              <div className="relative mx-auto aspect-[4/5] w-full max-w-[300px] overflow-hidden rounded-2xl border border-border bg-paper sm:max-w-[340px] lg:mx-0 lg:max-w-none">
+            {/* Photo — controlled portrait (below text on mobile) */}
+            <div className="lg:order-2">
+              <div className="relative mx-auto aspect-[4/5] w-full max-w-[260px] overflow-hidden rounded-2xl border border-border bg-paper sm:max-w-[320px] lg:mx-0 lg:max-w-none">
                 <Image
                   src={profile.photo}
                   alt={profile.name}
