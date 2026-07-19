@@ -56,8 +56,10 @@ export function Block({
   return (
     <section id={id} className={`border-t border-border scroll-mt-28 ${className}`}>
       <Container className="py-16 sm:py-24">
-        <h2 className="mb-10 text-3xl font-medium tracking-[-0.02em] sm:text-4xl">{title}</h2>
-        {children}
+        <div data-reveal>
+          <h2 className="mb-10 text-3xl font-medium tracking-[-0.02em] sm:text-4xl">{title}</h2>
+          {children}
+        </div>
       </Container>
     </section>
   );
@@ -71,7 +73,7 @@ export function CompanyLogos() {
         <p className="mb-8 text-center font-mono text-[11.5px] uppercase tracking-[0.24em] text-muted-foreground">
           Experience across
         </p>
-        <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-8">
+        <div data-reveal className="flex flex-wrap items-center justify-center gap-x-12 gap-y-8">
           {journey.map((c) => (
             <div key={c.company} className="flex items-center gap-2.5">
               <span className="relative h-8 w-8 shrink-0">

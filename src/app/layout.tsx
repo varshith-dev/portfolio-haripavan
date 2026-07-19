@@ -5,6 +5,7 @@ import { profile, education, skills } from "@/lib/data";
 import { siteUrl, keywords } from "@/lib/seo";
 import { SiteHeader } from "@/components/nav";
 import { SiteFooter } from "@/components/chrome";
+import { Animations } from "@/components/animations";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -104,6 +105,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
+        <Animations />
         <SiteHeader />
         <main id="top" className="flex-1">{children}</main>
         <SiteFooter />

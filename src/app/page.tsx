@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, ArrowRight } from "lucide-react";
+import { ArrowUpRight, ArrowRight, Download } from "lucide-react";
 import {
   profile,
   experience,
@@ -13,11 +13,18 @@ import {
 import { Container, Block, CompanyLogos } from "@/components/chrome";
 import { PostsCarousel } from "@/components/posts-carousel";
 
-const stats = [
-  { value: profile.followers, label: "Followers" },
-  { value: profile.connections, label: "Connections" },
-  { value: "05", label: "Organizations" },
-  { value: "2017", label: "In HR since" },
+const stats: {
+  value: string;
+  to: number;
+  label: string;
+  suffix?: string;
+  pad?: number;
+  format?: string;
+}[] = [
+  { value: profile.followers, to: 49437, format: "comma", label: "Followers" },
+  { value: profile.connections, to: 500, suffix: "+", label: "Connections" },
+  { value: "05", to: 5, pad: 2, label: "Organizations" },
+  { value: "2017", to: 2017, label: "In HR since" },
 ];
 
 export default function Home() {
@@ -29,13 +36,37 @@ export default function Home() {
           <div className="grid items-center gap-10 lg:grid-cols-[1fr_360px] lg:gap-14">
             {/* Text (first on mobile) */}
             <div className="lg:order-1">
-              <p className="font-mono text-[12px] uppercase tracking-[0.22em] text-muted-foreground">
+              <p
+                data-hero
+                className="font-mono text-[12px] uppercase tracking-[0.22em] text-muted-foreground"
+              >
                 People &amp; Culture Partner · HR Domain Expert
               </p>
-              <h1 className="mt-4 text-5xl font-medium leading-[1.02] tracking-[-0.03em] sm:text-6xl">
+              <h1
+                data-hero
+                className="mt-4 text-5xl font-medium leading-[1.02] tracking-[-0.03em] sm:text-6xl"
+              >
                 Hari Pavan
               </h1>
-              <p className="mt-5 max-w-xl text-lg leading-relaxed text-foreground/80 sm:text-xl sm:leading-relaxed">
+              {/* Sketchy hand-drawn underline (draws in via GSAP) */}
+              <svg
+                data-squiggle
+                viewBox="0 0 300 18"
+                fill="none"
+                aria-hidden
+                className="mt-2 h-3.5 w-56 text-[#7c3aed]"
+              >
+                <path
+                  d="M3 11 C 45 3, 70 16, 110 9 S 175 3, 210 12 S 275 4, 297 9"
+                  stroke="currentColor"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                />
+              </svg>
+              <p
+                data-hero
+                className="mt-5 max-w-xl text-lg leading-relaxed text-foreground/80 sm:text-xl sm:leading-relaxed"
+              >
                 People &amp; Culture partner with{" "}
                 <span className="text-foreground">8+ years</span> across talent
                 acquisition, HR business partnering, and employee engagement —
@@ -43,7 +74,7 @@ export default function Home() {
               </p>
 
               {/* Current role — trust signal */}
-              <div className="mt-7 flex items-center gap-3">
+              <div data-hero className="mt-7 flex items-center gap-3">
                 <span className="relative h-9 w-9 shrink-0 rounded-md border border-border">
                   <Image
                     src="/logos/anarock.png"
@@ -64,7 +95,7 @@ export default function Home() {
               </div>
 
               {/* Previously — credibility */}
-              <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-3">
+              <div data-hero className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-3">
                 <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-muted-foreground">
                   Previously
                 </span>
@@ -86,7 +117,7 @@ export default function Home() {
                   ))}
               </div>
 
-              <div className="mt-8 flex flex-wrap gap-3">
+              <div data-hero className="mt-8 flex flex-wrap gap-3">
                 <a
                   href={profile.linkedin}
                   target="_blank"
@@ -95,6 +126,14 @@ export default function Home() {
                 >
                   Connect on LinkedIn
                   <ArrowUpRight className="h-4 w-4" />
+                </a>
+                <a
+                  href="/Hari-Pavan-CV.pdf"
+                  download
+                  className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-3 text-sm transition-colors hover:border-foreground"
+                >
+                  Download CV
+                  <Download className="h-4 w-4" />
                 </a>
                 <a
                   href="#highlights"
@@ -107,7 +146,7 @@ export default function Home() {
             </div>
 
             {/* Photo — controlled portrait (below text on mobile) */}
-            <div className="lg:order-2">
+            <div data-hero className="lg:order-2">
               <div className="relative mx-auto aspect-[4/5] w-full max-w-[260px] overflow-hidden rounded-2xl border border-border bg-paper sm:max-w-[320px] lg:mx-0 lg:max-w-none">
                 <Image
                   src={profile.photo}
@@ -133,7 +172,14 @@ export default function Home() {
                 i >= 2 ? "border-t lg:border-t-0" : ""
               } ${i % 2 === 1 ? "border-l pl-6 lg:pl-8" : ""} lg:border-l lg:first:border-l-0`}
             >
-              <p className="text-3xl font-medium tracking-tight tabular-nums sm:text-4xl">
+              <p
+                data-count
+                data-to={s.to}
+                data-suffix={s.suffix ?? ""}
+                data-pad={s.pad ?? 0}
+                data-format={s.format ?? ""}
+                className="text-3xl font-medium tracking-tight tabular-nums sm:text-4xl"
+              >
                 {s.value}
               </p>
               <p className="mt-1 font-mono text-[11.5px] uppercase tracking-[0.16em] text-muted-foreground">
