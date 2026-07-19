@@ -12,7 +12,6 @@ import {
 } from "@/lib/data";
 import { Container, Block, CompanyLogos } from "@/components/chrome";
 import { PostsCarousel } from "@/components/posts-carousel";
-import { HeroPhoto } from "@/components/hero-photo";
 
 const stats = [
   { value: profile.followers, label: "Followers" },
@@ -107,9 +106,18 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Photo with orbiting tagline flowers */}
+            {/* Photo — controlled portrait */}
             <div className="order-1 lg:order-2">
-              <HeroPhoto />
+              <div className="relative mx-auto aspect-[4/5] w-full max-w-[300px] overflow-hidden rounded-2xl border border-border bg-paper sm:max-w-[340px] lg:mx-0 lg:max-w-none">
+                <Image
+                  src={profile.photo}
+                  alt={profile.name}
+                  fill
+                  sizes="(max-width: 1024px) 340px, 360px"
+                  className="object-cover"
+                  priority
+                />
+              </div>
             </div>
           </div>
         </Container>
