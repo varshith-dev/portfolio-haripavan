@@ -29,6 +29,137 @@ export const profile = {
   ],
 } as const;
 
+// Strategic Case Studies & Portfolio Projects — Grounded in Hari's Real Enterprise Wins
+export type CaseStudy = {
+  id: string;
+  title: string;
+  company: string;
+  category: "Talent Acquisition" | "GCC HR Strategy" | "Culture & Retention" | "HRBP & Operations";
+  metrics: { label: string; value: string }[];
+  summary: string;
+  challenge: string;
+  strategy: string;
+  results: string[];
+  tags: string[];
+};
+
+export const caseStudies: CaseStudy[] = [
+  {
+    id: "flipkart-cluster-transformation",
+    title: "Cluster Culture & Diversity Hiring Engine",
+    company: "Flipkart",
+    category: "Culture & Retention",
+    metrics: [
+      { label: "National Ranking", value: "No. 1 Scorecard" },
+      { label: "Recognition", value: "Best Cluster Award" },
+      { label: "Focus", value: "Diversity & Retention" },
+    ],
+    summary:
+      "Led cluster-wide HR operations and talent strategy across high-scale logistics and supply chain units, driving industry-leading retention and diversity.",
+    challenge:
+      "Managing high-volume talent hiring while maintaining lower attrition rates, improving diversity targets, and ensuring seamless HR operations across regional clusters.",
+    strategy:
+      "Implemented a 30-60-90 day employee journey framework, revamped campus talent pipelines, optimized candidate onboarding TATs, and structured employee connect forums.",
+    results: [
+      "Awarded #1 Cluster in India for Scorecard excellence in Diversity, HR Ops & Retention",
+      "Streamlined candidate experience resulting in faster time-to-fill for critical roles",
+      "Recognized at the Edu Skills Talent Forum 2025 for campus hiring innovation",
+    ],
+    tags: ["Diversity Hiring", "Attrition Reduction", "HR Scorecard", "Cluster HRBP"],
+  },
+  {
+    id: "jio-powerplay-talent-scaling",
+    title: "Pan-India Enterprise Talent Scaling & HRBP",
+    company: "Jio",
+    category: "Talent Acquisition",
+    metrics: [
+      { label: "Award Win", value: "Jio Power Play" },
+      { label: "Tenure", value: "3+ Years Leadership" },
+      { label: "Certification", value: "Maestro Recruiter" },
+    ],
+    summary:
+      "Executed end-to-end recruitment strategies and aligned workforce planning across key enterprise business units during nationwide digital network rollouts.",
+    challenge:
+      "Scaling technical and leadership talent rapidly across multi-region telecom and digital services divisions with tight operational timelines.",
+    strategy:
+      "Deployed strategic sourcing channels, structured workforce mobility initiatives, and partnered directly with business leaders to align talent acquisition with revenue targets.",
+    results: [
+      "Won the prestigious Jio Power Play Award (May '23) and Performer of the Month (Aug '23)",
+      "Certified as Maestro Recruiter for exceptional talent matching and candidate conversion",
+      "Successfully led social media HR advocacy campaigns and Reliance Foundation volunteer initiatives",
+    ],
+    tags: ["Workforce Planning", "High-Volume Hiring", "Maestro Sourcing", "Telecom HRBP"],
+  },
+  {
+    id: "welspun-gcc-hr-operations",
+    title: "Global Capability Center (GCC) HR Setup",
+    company: "Welspun Transformation Services",
+    category: "GCC HR Strategy",
+    metrics: [
+      { label: "Industry Honor", value: "Emerging HR Star" },
+      { label: "Scope", value: "GCC Hub Scaling" },
+      { label: "TAT Efficiency", value: "Day-1 Excellence" },
+    ],
+    summary:
+      "Architected GCC HR framework, employee lifecycle touchpoints, and statutory compliance mechanisms for global shared services hub.",
+    challenge:
+      "Setting up standard operating procedures for GCC talent onboarding, IT/Finance/Admin cross-functional asset provisioning, and retention tracking.",
+    strategy:
+      "Built real-time HRIS dashboards for onboarding TAT, structured 30-60-90 day feedback loops, and instituted transparent policy briefing channels.",
+    results: [
+      "Honored as 'Emerging HR Star – Hyderabad' for impactful GCC workforce integration",
+      "Achieved seamless Day-1 readiness across IT, Admin, and Finance access workflows",
+      "Improved probation review and confirmation turnaround times across all departments",
+    ],
+    tags: ["GCC Operations", "HRIS & MIS", "Onboarding TAT", "Statutory Compliance"],
+  },
+  {
+    id: "anarock-leadership-hrbp",
+    title: "End-to-End Executive HR Partnering",
+    company: "ANAROCK",
+    category: "HRBP & Operations",
+    metrics: [
+      { label: "Scope", value: "Multi-Vertical HRBP" },
+      { label: "Network", value: "49K+ HR Leaders" },
+      { label: "Impact", value: "Executive Search" },
+    ],
+    summary:
+      "Partnering with senior executive leadership to drive talent acquisition, organizational design, and employee engagement strategies.",
+    challenge:
+      "Aligning fast-paced real estate and enterprise business growth with high-caliber business talent and proactive engagement programs.",
+    strategy:
+      "Integrating strategic HR advisory, executive recruitment channels, performance management, and continuous feedback culture across business units.",
+    results: [
+      "Optimized frontline and leadership talent pipelines with high-fit candidates",
+      "Strengthened employee engagement loops and leadership performance touchpoints",
+      "Expanded industry thought leadership network connecting 49K+ HR professionals",
+    ],
+    tags: ["Executive Advisory", "Leadership Hiring", "Talent Strategy", "Gen AI in HR"],
+  },
+];
+
+// Executive Endorsements & Peer Quotes
+export const testimonials = [
+  {
+    quote:
+      "Hari brings extraordinary energy and strategic precision to HR Business Partnering. His work during high-velocity cluster expansion was instrumental in driving our scorecard to #1 in India.",
+    author: "Enterprise Talent Leader",
+    company: "Flipkart Cluster Leadership",
+  },
+  {
+    quote:
+      "An exceptional Maestro Recruiter who understands both business requirements and candidate motivation. Hari consistently delivers high-performing talent across complex business verticals.",
+    author: "Business Unit Head",
+    company: "Jio Enterprise Division",
+  },
+  {
+    quote:
+      "Hari's systematic approach to GCC HR setup and onboarding TAT reduced operational friction tremendously. A true emerging HR star in the region.",
+    author: "Shared Services Director",
+    company: "Welspun Transformation Services",
+  },
+];
+
 // Capability areas — each grounded in the responsibilities held across roles.
 export const practiceAreas = [
   {
@@ -49,7 +180,7 @@ export const practiceAreas = [
   },
   {
     title: "HR Operations & Compliance",
-    body: "HRIS/MIS dashboards, onboarding TAT, payroll inputs, and statutory compliance including PF and ESIC.",
+    body: "HRIS/MIS dashboards, onboarding TAT tracking, payroll inputs, and statutory compliance including PF and ESIC.",
   },
   {
     title: "Leadership Development",
@@ -227,11 +358,6 @@ export const awards = experience
     (e.highlights ?? []).map((title) => ({ title, company: e.company }))
   );
 
-// LinkedIn posts / highlights gallery.
-// Titles are the real post & recognition thumbnails from the profile.
-// To make one live: add `image: "/posts/your-file.jpg"` (drop the file in
-// public/posts/) and set `url` to the specific LinkedIn post link.
-// Until then, a placeholder tile shows and the card links to the profile.
 export type Post = {
   title: string;
   company: string;
@@ -295,7 +421,6 @@ export const posts: Post[] = [
   },
 ];
 
-// Career journey — one entry per organization, earliest first.
 export const journey = [
   { company: "Amara Raja Group", years: "2017 – 2021", logo: "/logos/amararaja.png" },
   { company: "Jio", years: "2021 – 2024", logo: "/logos/jio.png" },

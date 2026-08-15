@@ -59,14 +59,14 @@ export function Carousel({
         <button
           aria-label="Previous"
           onClick={() => nudge(-1)}
-          className={`flex h-10 w-10 items-center justify-center rounded-full border transition-colors ${btn}`}
+          className={`flex h-10 w-10 items-center justify-center rounded-[4px] border transition-colors ${btn}`}
         >
           <ChevronLeft className="h-4 w-4" />
         </button>
         <button
           aria-label="Next"
           onClick={() => nudge(1)}
-          className={`flex h-10 w-10 items-center justify-center rounded-full border transition-colors ${btn}`}
+          className={`flex h-10 w-10 items-center justify-center rounded-[4px] border transition-colors ${btn}`}
         >
           <ChevronRight className="h-4 w-4" />
         </button>

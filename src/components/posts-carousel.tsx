@@ -15,25 +15,27 @@ export function PostsCarousel({ dark = false }: { dark?: boolean }) {
           href={post.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="group flex w-[80%] shrink-0 snap-start flex-col overflow-hidden rounded-md border border-border bg-card transition-all duration-200 ease-out hover:-translate-x-1 hover:-translate-y-1 hover:border-transparent hover:shadow-[10px_10px_0_0_#7c3aed] sm:w-[47%] lg:w-[32%]"
+          className="group agency-card flex w-[85%] shrink-0 snap-start flex-col overflow-hidden rounded-[4px] border border-border bg-card sm:w-[48%] lg:w-[32%]"
         >
           <div className="relative aspect-[4/3] w-full overflow-hidden bg-paper">
             <Image
               src={post.image as string}
               alt={post.title}
               fill
-              sizes="(max-width: 640px) 80vw, (max-width: 1024px) 47vw, 32vw"
-              className="object-cover"
+              sizes="(max-width: 640px) 85vw, (max-width: 1024px) 48vw, 32vw"
+              className="object-cover transition-transform duration-500 group-hover:scale-103"
             />
           </div>
-          <div className="flex items-start justify-between gap-3 p-4">
+          <div className="flex items-start justify-between gap-3 p-5">
             <div>
-              <h3 className="text-[14px] font-medium leading-snug text-foreground">{post.title}</h3>
-              <p className="mt-1 font-mono text-[11.5px] uppercase tracking-[0.1em] text-muted-foreground">
+              <h3 className="font-display text-[15px] font-semibold leading-snug text-foreground transition-colors group-hover:text-foreground/80">{post.title}</h3>
+              <p className="mt-1.5 font-mono text-[11.5px] uppercase tracking-wider text-muted-foreground font-medium">
                 {post.company}
               </p>
             </div>
-            <ArrowUpRight className="h-4 w-4 shrink-0 text-muted-foreground transition-colors group-hover:text-foreground" />
+            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[4px] bg-paper text-foreground border border-border transition-all duration-200 group-hover:bg-foreground group-hover:text-background">
+              <ArrowUpRight className="h-4 w-4" />
+            </div>
           </div>
         </a>
       ))}
